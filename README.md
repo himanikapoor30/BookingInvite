@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Our 6th Anniversary! ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+    <title>Our 6th Anniversary ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Quicksand', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-            color: #333;
+            /* Richer, warm cinematic sunset-peach gradient */
+            background: linear-gradient(135deg, #fbc5b5 0%, #ff8585 50%, #d4a373 100%);
+            color: #2c2c2c;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -23,16 +24,17 @@
             position: relative;
         }
 
-        .heart-bg {
+        /* Large, visible floating emojis */
+        .floating-emoji {
             position: absolute;
-            font-size: 22px;
-            color: rgba(255, 100, 150, 0.4);
-            animation: floatUp 4s linear infinite;
+            font-size: 32px;
+            animation: floatUp 5s linear infinite;
             z-index: 0;
+            opacity: 0.85;
         }
         @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+            0% { transform: translateY(105vh) scale(0.6) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.3) rotate(360deg); opacity: 0; }
         }
 
         .page {
@@ -45,8 +47,8 @@
             padding: 20px;
             opacity: 0;
             z-index: 10;
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-            transform: scale(0.9);
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            transform: scale(0.92);
             position: absolute;
         }
 
@@ -56,155 +58,148 @@
             transform: scale(1);
         }
 
-        /* COMIC BUBBLE STYLING FOR PAGE 1 */
-        .photo-story-container {
-            position: relative;
-            width: 85vw;
-            max-width: 340px;
-            height: 400px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            margin-bottom: 25px;
+        /* Realistic Polaroid Photo Style */
+        .polaroid-frame {
             background: #fff;
+            padding: 12px 12px 35px 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            border-radius: 4px;
+            position: relative;
+            max-width: 280px;
+            margin-bottom: 20px;
+            transform: rotate(-2deg);
         }
-        .photo-story-container img {
+        .polaroid-frame img {
             width: 100%;
-            height: 100%;
+            height: 220px;
             object-fit: cover;
+            border-radius: 2px;
         }
+        .polaroid-frame.tilt-right { transform: rotate(3deg); }
+
+        /* Comic Bubbles */
         .comic-bubble {
             position: absolute;
-            background: white;
-            padding: 10px 15px;
-            border-radius: 20px;
-            font-size: 14px;
+            background: #fff;
+            padding: 8px 14px;
+            border-radius: 18px;
+            font-size: 15px;
             font-weight: 700;
-            color: #d6336c;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            max-width: 70%;
-            animation: popIn 0.5s ease-out;
+            color: #b52b2b;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 5;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         @keyframes popIn {
             0% { transform: scale(0); }
-            80% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-        .bubble-top { top: 15px; left: 15px; border-bottom-left-radius: 2px; }
-        .bubble-bottom { bottom: 15px; right: 15px; border-top-right-radius: 2px; }
+        .b-top { top: -10px; left: -15px; }
+        .b-bottom { bottom: 25px; right: -15px; }
 
-        /* FULL SCREEN COLLAGE FOR PAGE 2 */
-        .fullscreen-collage {
+        /* Full Screen Organic Smile Wall */
+        .smile-wall {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-auto-rows: 25vh;
             z-index: -1;
+            filter: brightness(0.9);
         }
-        .fullscreen-collage img {
+        .smile-wall img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.85;
+            opacity: 0.75;
         }
-        .minimal-glass-banner {
+
+        /* Handwritten narrative styling */
+        .story-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 17px;
+            line-height: 1.5;
+            font-weight: 700;
+            color: #2b2b2b;
             background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
             padding: 20px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            width: 90%;
-            max-width: 340px;
-        }
-
-        /* STANDARD CARDS */
-        .card-container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 25px 20px;
-            border-radius: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            width: 90%;
-            max-width: 340px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            max-width: 320px;
             margin-bottom: 20px;
         }
-        .card-container img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 15px;
+
+        .highlight-script {
+            font-family: 'Caveat', cursive;
+            font-size: 28px;
+            color: #b52b2b;
+            display: block;
+            margin-bottom: 5px;
         }
 
-        h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; color: #d6336c; }
-        p { font-size: 16px; line-height: 1.4; color: #444; font-weight: 600; }
-
+        /* Custom Elegant Buttons */
         .btn {
-            background: #ff477e;
-            color: white;
+            background: #2b2b2b;
+            color: #fff;
             border: none;
-            padding: 14px 30px;
+            padding: 14px 32px;
             font-size: 16px;
             font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 6px 15px rgba(255, 71, 126, 0.4);
-            font-family: inherit;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
             transition: all 0.2s;
             z-index: 20;
         }
-        .btn:active { transform: scale(0.9); }
+        .btn:active { transform: scale(0.92); }
 
         .button-group {
             position: relative;
             width: 100%;
-            height: 120px;
+            height: 130px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
-        #yesBtn { background: #ff477e; transition: all 0.3s ease; }
+        #yesBtn { background: #2b2b2b; color: #fff; transition: all 0.3s ease; }
         #noBtn {
             background: #fff;
-            color: #ff477e;
-            border: 2px solid #ff477e;
+            color: #2b2b2b;
+            border: 2px solid #2b2b2b;
             position: absolute;
-            top: 60px;
+            top: 65px;
             transition: all 0.2s ease;
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Music (Autoplays a soft romantic vibe) -->
     <audio id="bgMusic" loop>
         <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sec-483.mp3" type="audio/mpeg">
     </audio>
 
-    <div id="heart-container"></div>
+    <div id="emoji-container"></div>
 
-    <!-- PAGE 1: The Wedding Comic Scene -->
+    <!-- PAGE 1: Wedding Group Photo with Comic Bubbles -->
     <div id="page1" class="page active-page">
-        <div class="photo-story-container">
-            <!-- 📸 REPLACE WITH YOUR WEDDING GROUP PHOTO -->
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500&q=80" alt="Wedding Group">
-            
-            <div class="comic-bubble bubble-top">
-                "Isse toh propose krungi..." 🤭
-            </div>
-            <div class="comic-bubble bubble-bottom">
-                "Dekhte hain..." 👀
-            </div>
+        <div class="polaroid-frame">
+            <!-- 📸 REPLACE WITH WEDDING GROUP PHOTO -->
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500&q=80" alt="Wedding">
+            <div class="comic-bubble b-top">"Isse toh propose krungi..." 🤭💕</div>
+            <div class="comic-bubble b-bottom">"Dekhte hain..." 😏✨</div>
         </div>
-        <p style="color:white; text-shadow: 0 2px 5px rgba(0,0,0,0.3); margin-bottom: 20px;">October 2020. Never thought this boy would become my everything.</p>
-        <button class="btn" onclick="startExperience(1, 2)">Let's go back ➔</button>
+        <div class="story-text">
+            <span class="highlight-script">October 2020</span>
+            Never in my wildest dreams did I think that boy standing in the back of the group photo would become my entire world.
+        </div>
+        <button class="btn" onclick="startExperience(1, 2)">Open our story ➔</button>
     </div>
 
-    <!-- PAGE 2: Full Screen Smile Collage -->
+    <!-- PAGE 2: Full Screen Smile Wall -->
     <div id="page2" class="page" style="padding: 0;">
-        <div class="fullscreen-collage">
+        <div class="smile-wall">
             <!-- 📸 REPLACE THESE WITH HIS SMILE SCREENSHOTS -->
             <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80">
             <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80">
@@ -216,77 +211,88 @@
             <img src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?auto=format&fit=crop&w=300&q=80">
             <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80">
         </div>
-        <div class="minimal-glass-banner">
-            <h2>That Smile... 🫠</h2>
-            <p style="margin-bottom: 15px; font-size: 15px;">Through every screenshot, I fell harder for this exact smile.</p>
-            <button class="btn" onclick="nextPage(2, 3)">Next ➔</button>
+        <div class="story-text" style="background: rgba(255,255,255,0.95); z-index: 10;">
+            <span class="highlight-script">That Smile... 🫠</span>
+            I tried so hard to play it cool, but I fell the hardest for this exact smile. (Yes, saving all your video call screenshots was totally justified!) 🥰
+            <button class="btn" style="margin-top: 15px; width: 100%;" onclick="nextPage(2, 3)">Continue ➔</button>
         </div>
     </div>
 
-    <!-- PAGE 3: Ambala Station Incident -->
+    <!-- PAGE 3: Ambala Station -->
     <div id="page3" class="page">
-        <div class="card-container">
+        <div class="polaroid-frame tilt-right">
             <!-- 📸 REPLACE WITH AMBALA PHOTO -->
-            <img src="https://images.unsplash.com/photo-1558980663-3685c1d673c4?auto=format&fit=crop&w=500&q=80" alt="Ambala Station">
-            <h2>Ambala Station, 2024 🚂</h2>
-            <p>You acted all strict, denying to meet me... until 5 minutes before my train. You melted and came running anyway! 🏃‍♂️💨</p>
+            <img src="https://images.unsplash.com/photo-1558980663-3685c1d673c4?auto=format&fit=crop&w=500&q=80" alt="Ambala">
+            <div class="comic-bubble b-top">5 minutes left! 🏃‍♂️💨</div>
         </div>
-        <button class="btn" onclick="nextPage(3, 4)">Next ➔</button>
+        <div class="story-text">
+            <span class="highlight-script">Ambala Station, 2024</span>
+            Remember when you acted all stubborn and refused to meet me? And then magically showed up just 5 minutes before my train. You just couldn't stay away! 🙈
+        </div>
+        <button class="btn" onclick="nextPage(3, 4)">Next chapter ➔</button>
     </div>
 
-    <!-- PAGE 4: 2025 Reunion & 2026 Promise -->
+    <!-- PAGE 4: Reunion & 2026 Reality -->
     <div id="page4" class="page">
-        <div class="card-container">
-            <!-- 📸 REPLACE WITH 2025/2026 PHOTO -->
-            <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=500&q=80" alt="Reunion">
-            <h2>Thick & Thin ❤️</h2>
-            <p>2023 was rough, 2025 brought us back, and 2026 has its pressure. But I want you to know: I choose you, over and over again.</p>
+        <div class="polaroid-frame">
+            <!-- 📸 REPLACE WITH REUNION PHOTO -->
+            <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=500&q=80" alt="Us">
         </div>
-        <button class="btn" onclick="nextPage(4, 5)">I have a demand! ➔</button>
+        <div class="story-text">
+            <span class="highlight-script">Through Thick & Thin</span>
+            2023 tested us, November 2025 brought us back, and 2026 brought heavy pressure. But no matter what, my heart always chooses you, over and over again. ❤️
+        </div>
+        <button class="btn" onclick="nextPage(4, 5)">I have a demand! 🤫</button>
     </div>
 
-    <!-- PAGE 5: The Date Ask & Paratha Bribe -->
+    <!-- PAGE 5: The Date Ask & Bribe -->
     <div id="page5" class="page">
-        <div class="card-container" style="text-align: center; padding: 20px;">
-            <img src="https://media.tenor.com/J3yqXW1D6y8AAAAi/please-bubu.gif" alt="Please" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 10px auto;">
-            <h2>Anniversary Date? 🥺</h2>
-            <p style="font-size: 14px; margin-bottom: 15px;">Let's forget the house pressure and family stress for one day. My 21-year-old boy deserves a break.<br><b style="color:#d6336c;">(Bribing you with hot Aloo Parathas 😋🧈)</b></p>
+        <div class="polaroid-frame tilt-right" style="padding-bottom: 15px;">
+            <img src="https://media.tenor.com/J3yqXW1D6y8AAAAi/please-bubu.gif" alt="Please" style="height: 140px;">
+        </div>
+        <div class="story-text" style="padding: 15px;">
+            <span class="highlight-script">My 21-Year-Old Boy</span>
+            Leave the house building and family stress behind for just one day. Let's celebrate 6 years together!<br>
+            <span style="font-size: 13px; color: #b52b2b; display: block; margin-top: 5px;">(Officially bribing you with hot Aloo Parathas 😋🧈)</span>
             
-            <div class="button-group">
+            <div class="button-group" style="margin-top: 15px;">
                 <button id="yesBtn" class="btn" onclick="nextPage(5, 6)">YES! Let's go! ❤️</button>
                 <button id="noBtn" class="btn" onclick="runAway()">No 😒</button>
             </div>
         </div>
     </div>
 
-    <!-- PAGE 6: Success! -->
+    <!-- PAGE 6: Success -->
     <div id="page6" class="page">
-        <div class="card-container" style="text-align: center;">
-            <img src="https://media.tenor.com/gK0Z-eNf3fMAAAAi/bubu-dudu-dance.gif" alt="Yay!" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin: 0 auto 15px auto;">
-            <h2>It's a Date! 🎉</h2>
-            <p>I'll keep the parathas hot and the smiles ready. See you soon! ❤️</p>
+        <div class="polaroid-frame">
+            <img src="https://media.tenor.com/gK0Z-eNf3fMAAAAi/bubu-dudu-dance.gif" alt="Yay!" style="height: 160px;">
+        </div>
+        <div class="story-text">
+            <span class="highlight-script">It's a Date! 🎉</span>
+            I'll keep the parathas hot and the smiles ready. See you soon, my love! ❤️
         </div>
     </div>
 
     <script>
-        // Start background music and music handling on first click
         function startExperience(currentId, nextId) {
             const music = document.getElementById('bgMusic');
             music.volume = 0.4;
-            music.play().catch(e => console.log("Audio play blocked by browser:", e));
+            music.play().catch(e => console.log("Audio play blocked:", e));
             nextPage(currentId, nextId);
         }
 
-        const heartContainer = document.getElementById('heart-container');
+        // Floating big emojis (kuchu-puchu hearts, sparkles, teasing faces)
+        const emojiList = ['💖', '✨', '🥺', '🙈', '🤭', '💕', '🥰', '🤌'];
+        const emojiContainer = document.getElementById('emoji-container');
         setInterval(() => {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-bg');
-            heart.innerHTML = ['❤️','✨','🥺','🥰'][Math.floor(Math.random() * 4)];
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            heartContainer.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 6000);
-        }, 400);
+            const emoji = document.createElement('div');
+            emoji.classList.add('floating-emoji');
+            emoji.innerHTML = emojiList[Math.floor(Math.random() * emojiList.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            emojiContainer.appendChild(emoji);
+            setTimeout(() => { emoji.remove(); }, 7000);
+        }, 500);
 
         function nextPage(currentId, nextId) {
             const currentPage = document.getElementById(`page${currentId}`);
@@ -308,11 +314,11 @@
 
         let noClickCount = 0;
         const cheekyMessages = [
-            "Hey! Try again! 🥺",
+            "Nice try, handsome! 🤭",
             "Too slow! 🏃‍♂️💨",
             "You can't escape my parathas!",
-            "Stop teasing me! 😭",
-            "Just click YES already! 😡"
+            "Stop teasing me! 🥺",
+            "Just click YES already! 😡💕"
         ];
 
         function runAway() {
